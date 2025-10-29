@@ -1,0 +1,112 @@
+.group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.input {
+  font-size: 16px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #515151;
+  background: transparent;
+  color: white;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.input-group {
+  color: #999;
+  font-size: 20px;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 5px;
+  top: 10px;
+  white-space: nowrap;
+  display: inline;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.input:focus ~ .input-group,
+.input:valid ~ .input-group,
+.input:not(:placeholder-shown) ~ .input-group {
+  top: -20px;
+  font-size: 14px;
+  color: #a8d8ff;
+}
+
+select.input:not([value=""]) ~ .input-group {
+  top: -20px;
+  font-size: 14px;
+  color: #a8d8ff;
+}
+
+textarea.input:focus ~ .input-group,
+textarea.input:valid ~ .input-group {
+  top: -20px;
+  font-size: 14px;
+  color: #a8d8ff;
+}
+
+.bar {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.bar:before,
+.bar:after {
+  content: "";
+  height: 2px;
+  width: 0;
+  bottom: 1px;
+  position: absolute;
+  background: #a8d8ff;
+  transition: 0.2s ease all;
+  -moz-transition: 0.2s ease all;
+  -webkit-transition: 0.2s ease all;
+}
+
+.bar:before {
+  left: 50%;
+}
+
+.bar:after {
+  right: 50%;
+}
+
+.input:focus ~ .bar:before,
+.input:focus ~ .bar:after {
+  width: 50%;
+}
+
+.highlight {
+  position: absolute;
+  height: 60%;
+  width: 100px;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+.input:focus ~ .highlight {
+  animation: inputHighlighter 0.3s ease;
+}
+
+@keyframes inputHighlighter {
+  from {
+    background: #a8d8ff;
+  }
+
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
