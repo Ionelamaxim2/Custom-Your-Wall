@@ -20,11 +20,7 @@ export default function PrivacyPolicy() {
           content:
             "Welcome to Custom Your Wall. We respect your privacy and protect personal data. This policy explains what data we collect, how we use it, and what your rights are.",
         },
-        {
-          title: "2) Who we are",
-          content:
-            "The website www.customyourwall.cloud is managed by SC Custom Your Wall SRL.\nAddress: [Complete address] • CUI: [CUI] • Reg. No.: [Jxx/xxxx/20xx]\nEmail: customyourwall@gmail.com • Phone: [07xx xxx xxx]",
-        },
+
         {
           title: "3) What data we collect",
           content:

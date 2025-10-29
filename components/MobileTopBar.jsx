@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import MobileMenu from "./MobileMenu";
 
@@ -31,12 +32,16 @@ export default function MobileTopBar() {
             <span>Go back</span>
           </button>
         ) : (
-          <span
-            className="tracking-wide font-bigshoulders font-bold text-[1.7rem] text-[#ffffff
-]"
-          >
-            Custom Your Wall
-          </span>
+          <a href="/" className="flex items-center" aria-label="Home">
+            <Image
+              src="/photos/logo.svg"
+              alt="Custom Your Wall logo"
+              width={140}
+              height={40}
+              priority
+              className="h-12 w-auto brightness-0 invert"
+            />
+          </a>
         )}
         <div className="relative h-full flex items-center">
           <MobileMenu inlineInBar={true} disableBubble={true} />

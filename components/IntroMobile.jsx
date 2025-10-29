@@ -15,7 +15,7 @@ export default function IntroMobile() {
     <section
       className="block md:hidden relative w-full min-h-screen intro-mobile rounded-b-[50px] overflow-hidden"
       style={{
-        backgroundImage: "url('/photos/fundalmobil.webp')",
+        backgroundImage: "url('/photos/peretestanga.webp')",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
@@ -35,12 +35,9 @@ export default function IntroMobile() {
         }}
       >
         <h1
-          className="font-bigshoulders font-bold uppercase text-white"
+          className="font-adventpro font-light uppercase text-black"
           style={{
             letterSpacing: "0.8px",
-            WebkitTextStroke: "0.1px #000",
-            textShadow:
-              "-1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000",
           }}
         >
           {displayTitle}

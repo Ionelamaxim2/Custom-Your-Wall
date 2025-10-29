@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { translations } from "../data/translations";
+import DotGrid from "./DotGrid";
 
 const materials = [
   { image: "/photos/glasswall.webp", key: "glass" },
@@ -37,7 +38,19 @@ export default function InteractiveCircleMobile() {
       className="mobile-only block md:hidden relative w-full py-10"
       style={{ backgroundColor: "#1A1A1A" }}
     >
-      <div className="relative mx-auto" style={{ height: 440 }}>
+      {/* Dotted background similar to desktop */}
+      <DotGrid
+        dotSize={6}
+        gap={18}
+        baseColor="#2A2A2A"
+        activeColor="#2A2A2A"
+        proximity={0}
+        shockRadius={0}
+        shockStrength={0}
+        resistance={700}
+        returnDuration={1.4}
+      />
+      <div className="relative max-w-md mx-auto" style={{ height: 440 }}>
         {/* Center text (smaller on RO mobile) */}
         <h2
           className={`absolute z-10 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-white ${
