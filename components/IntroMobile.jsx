@@ -21,16 +21,16 @@ export default function IntroMobile() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <MobileMenu />
+      {/* Menu handled globally by MobileTopBar */}
       {/* Left-aligned headline (keeps desktop typography; width constrains size) */}
       <div
         className="absolute text-left pr-2"
         style={{
           left: 16,
-          top: language === "ro" ? "27%" : "18%",
+          top: language === "ro" ? "34%" : "26%",
           width: "calc(100vw / 3.5 - 32px)",
           maxWidth: "80%",
-          transform: `scale(${language === "ro" ? 3.2 : 3.5})`,
+          transform: `scale(${language === "ro" ? 3.1 : 3.4})`,
           transformOrigin: "left top",
         }}
       >
@@ -53,7 +53,7 @@ export default function IntroMobile() {
         style={{
           left: "50%",
           right: 16,
-          top: "66%",
+          top: "74%",
           transform: "translateY(-50%) scale(1.06)",
           transformOrigin: "right center",
         }}
@@ -66,24 +66,7 @@ export default function IntroMobile() {
         </p>
       </div>
 
-      {/* Glass island */}
-      <div
-        className="absolute left-1/2 -translate-x-1/2 glass-card"
-        style={{
-          width: "40vw",
-          maxWidth: 260,
-          height: 30,
-          borderRadius: 100,
-          bottom: 30,
-          boxShadow:
-            "0 1px 0 0 rgba(255,255,255,0.12) inset, 0 8px 24px rgba(0,0,0,0.32)",
-        }}
-      />
-
-      {/* Bottom logo */}
-      <div className="absolute left-1/2 -translate-x-1/2 bottom-4">
-        <img src="/logo.svg" alt="CYW" width={64} height={64} />
-      </div>
+      {/* Removed glass island and bottom logo on mobile as requested */}
     </section>
   );
 }

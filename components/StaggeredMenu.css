@@ -52,6 +52,8 @@
   -webkit-backdrop-filter: blur(12px);
   padding: 0.5rem 0.75rem;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .sm-logo {
@@ -206,7 +208,8 @@
 
 .sm-socials {
   margin-top: auto;
-  padding-top: 2rem;
+  padding-top: 1.5rem;
+  margin-bottom: 3.25rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
@@ -395,4 +398,117 @@
   .sm-icon-line {
     height: 0.1em;
   }
+}
+
+/* Fine-tune inline menu alignment in the top bar on mobile */
+@media (max-width: 640px) {
+  .mobile-menu-inline .sm-toggle {
+    gap: 0.45rem;
+    font-size: 1.7rem; /* exact same size as Close */
+  }
+  .mobile-menu-inline .sm-icon {
+    margin-top: 2px; /* fine-tune to center the 3 lines with the title */
+    width: 1.15em;
+    height: 1.15em;
+  }
+  .mobile-menu-inline .sm-icon-line {
+    height: 0.12em;
+  }
+  /* Ensure the text wrapper follows the same size */
+  .mobile-menu-inline .sm-toggle-textWrap,
+  .mobile-menu-inline .staggered-menu-wrapper[data-open] .sm-toggle-textWrap {
+    font-size: inherit;
+  }
+}
+
+/* Hide the "Menu/Close" text label in the inline top-bar toggle; keep only the icon */
+.mobile-menu-inline .sm-toggle-textWrap {
+  display: none !important;
+  width: 0 !important;
+  min-width: 0 !important;
+}
+
+/* Make the Close label and X larger when the menu is open (mobile inline) */
+@media (max-width: 640px) {
+  .mobile-menu-inline .staggered-menu-wrapper[data-open] .sm-toggle {
+    font-size: 1.7rem; /* match Menu closed size */
+  }
+  .mobile-menu-inline .staggered-menu-wrapper[data-open] .sm-icon {
+    width: 1.15em;
+    height: 1.15em;
+  }
+  .mobile-menu-inline .staggered-menu-wrapper[data-open] .sm-icon-line {
+    height: 0.12em;
+  }
+}
+
+/* Inline-in-bar variant: button pops slightly out on scroll */
+.mobile-menu-inline[data-scrolled] .sm-toggle-glass {
+  transform: translateY(6px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* Progressive morph from text (no glass) to bubble (glass) using CSS vars */
+.mobile-menu-inline .sm-toggle-glass {
+  background: rgba(255, 255, 255, var(--mm-glass-bg, 0));
+  border-color: rgba(255, 255, 255, var(--mm-glass-border, 0));
+  transform: translateY(var(--mm-translate-y, 0px));
+  padding: calc(0rem + 0.5rem * var(--mm-glass-bg, 0))
+    calc(0rem + 0.75rem * var(--mm-glass-bg, 0));
+  transition: transform 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease, box-shadow 0.25s ease, padding 0.25s ease;
+}
+
+/* When bubble is fully disabled (progress is exactly 0), flatten the button completely */
+.mobile-menu-inline[data-progress="0"] .sm-toggle-glass {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
+
+/* Ensure header sits inside the top bar when inline and stays above panel */
+.mobile-menu-inline .staggered-menu-header {
+  position: relative;
+  z-index: 30;
+  width: auto;
+  padding: 0 0.75rem; /* align vertically with bar content */
+  background: transparent;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* When panel is open, move the toggle a bit down/left so it isn't in the corner */
+@media (max-width: 640px) {
+  .mobile-menu-inline
+    .staggered-menu-wrapper[data-open]
+    .staggered-menu-header {
+    padding: 1.25rem 1.25rem 0 1rem;
+  }
+}
+
+/* Hide pre-layers until menu is opened to avoid any color/white slivers */
+.mobile-menu-inline .sm-prelayers {
+  display: none;
+}
+.mobile-menu-inline .staggered-menu-wrapper[data-open] .sm-prelayers {
+  display: block;
+}
+
+/* Hide the sliding panel until menu actually opens to prevent 1px white sliver */
+.mobile-menu-inline .staggered-menu-panel {
+  visibility: hidden;
+}
+.mobile-menu-inline .staggered-menu-wrapper[data-open] .staggered-menu-panel {
+  visibility: visible;
+}
+
+/* Clip any offscreen elements inside the inline container */
+.mobile-menu-inline {
+  overflow: hidden;
 }

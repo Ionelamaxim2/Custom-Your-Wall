@@ -31,7 +31,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed top-6 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-md shadow-black/10 flex justify-between items-center px-6 sm:px-8 md:px-10 h-[70px] w-[92%] max-w-[1200px] z-[60]">
+    <nav className="hidden md:flex fixed top-6 left-1/2 -translate-x-1/2 bg-white rounded-full shadow-md shadow-black/10 justify-between items-center px-6 sm:px-8 md:px-10 h-[70px] w-[92%] max-w-[1200px] z-[60]">
       <div className="flex items-center gap-3">
         <Image src="/logo.svg" alt="logo" width={40} height={40} priority />
         <span className="text-black font-bold tracking-wide text-lg uppercase font-bigshoulders">

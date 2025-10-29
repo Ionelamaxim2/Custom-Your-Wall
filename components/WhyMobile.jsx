@@ -25,7 +25,7 @@ export default function WhyMobile() {
         {t.whyTitle}
       </h2>
 
-      <div className="relative max-w-md mx-auto" style={{ minHeight: 520 }}>
+      <div className="relative max-w-md mx-auto" style={{ minHeight: 640 }}>
         {/* Machine image */}
         <div className="w-full flex items-center justify-center pt-6 pb-12">
           <Image
@@ -39,8 +39,8 @@ export default function WhyMobile() {
         </div>
 
         {/* Cards overlaying the image (staggered L/R) */}
-        <div className="absolute inset-x-0 z-10" style={{ top: 30 }}>
-          <div className="flex flex-col gap-5">
+        <div className="absolute inset-x-0 z-10" style={{ top: 16 }}>
+          <div className="flex flex-col gap-7">
             {items.map((it, i) => (
               <div
                 key={i}
@@ -49,11 +49,11 @@ export default function WhyMobile() {
                 }`}
               >
                 <div
-                  className="rounded-2xl p-4 glass-card w-[58%]"
+                  className="rounded-2xl p-6 glass-card w-[82%]"
                   style={{ borderColor: "rgba(0, 0, 0, 0.22)" }}
                 >
                   <h3
-                    className="text-[20px] font-bold uppercase mb-1 tracking-wide"
+                    className="text-[26px] font-bold uppercase mb-1 tracking-wide"
                     style={{
                       color: it.color,
                       WebkitTextStroke: "0.5px #000",
@@ -63,7 +63,7 @@ export default function WhyMobile() {
                   >
                     {t[it.key]}
                   </h3>
-                  <p className="text-[14px] text-white/95 leading-snug">
+                  <p className="text-[16px] text-white/95 leading-snug">
                     {t[it.desc]}
                   </p>
                 </div>

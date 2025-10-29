@@ -90,10 +90,17 @@ export default function Footer() {
       {/* White Section with Taped Corners */}
       <div className="relative bg-white rounded-3xl max-w-6xl mx-auto px-6 md:px-12 py-12 pb-16 flex flex-col items-start gap-8 mb-0">
         {/* Tape decorations */}
-        <div className="hidden md:block absolute -top-4 -left-8 w-[80px] h-[36px] scale-75">
+        <div className="hidden md:block absolute -top-3 -left-8 w-[80px] h-[36px] scale-75">
           {tape}
         </div>
         <div className="hidden md:block absolute -top-4 -right-8 rotate-90 w-[80px] h-[36px] scale-75">
+          {tape}
+        </div>
+        {/* Mobile: show pastel tapes in top corners */}
+        <div className="block md:hidden absolute -top-6 -left-6 w-[72px] h-[34px] scale-75">
+          {tape}
+        </div>
+        <div className="block md:hidden absolute -top-3 -right-6 rotate-90 w-[72px] h-[34px] scale-75">
           {tape}
         </div>
 

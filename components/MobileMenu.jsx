@@ -16,10 +16,16 @@ const socialItems = [
   },
 ];
 
-export default function MobileMenu() {
+export default function MobileMenu({
+  progress = 0,
+  inlineInBar = false,
+  disableBubble = false,
+}) {
   const pathname = usePathname();
   const isHome = pathname === "/";
-  const menuColor = isHome ? "#111" : "#fff";
+  const menuColor = inlineInBar ? "#fff" : isHome ? "#111" : "#fff";
+  // When the panel opens over a white background, ensure the toggle becomes dark for contrast
+  const openMenuBtnColor = inlineInBar ? "#111" : menuColor;
   const { language } = useLanguage();
   const t = translations[language];
   const [mounted, setMounted] = useState(false);
@@ -48,8 +54,34 @@ export default function MobileMenu() {
 
   if (!mounted) return null; // avoid flash on initial SSR
 
+  const effectiveProgress = disableBubble ? 0 : progress;
+  const clamped = Math.max(0, Math.min(1, effectiveProgress));
+  const translateY = 24 * clamped; // px moving out of the bar
+  const bgAlpha = 0.12 * clamped;
+  const borderAlpha = 0.22 * clamped;
+
   return (
-    <div className="block md:hidden fixed top-3 left-0 right-0 h-[72px] z-50">
+    <div
+      className={
+        "block md:hidden " +
+        (inlineInBar
+          ? "mobile-menu-inline relative z-[70]"
+          : "fixed left-0 right-0 z-[70]")
+      }
+      style={
+        inlineInBar
+          ? {
+              ["--mm-translate-y"]: translateY + "px",
+              ["--mm-glass-bg"]: String(bgAlpha),
+              ["--mm-glass-border"]: String(borderAlpha),
+            }
+          : { top: 12 }
+      }
+      data-progress={inlineInBar ? clamped : undefined}
+      data-scrolled={
+        inlineInBar && !disableBubble && clamped > 0.05 ? true : undefined
+      }
+    >
       <StaggeredMenu
         position="right"
         items={items}
@@ -57,7 +89,7 @@ export default function MobileMenu() {
         displaySocials={true}
         displayItemNumbering={true}
         menuButtonColor={menuColor}
-        openMenuButtonColor={menuColor}
+        openMenuButtonColor={openMenuBtnColor}
         changeMenuColorOnOpen={true}
         colors={["#B19EEF", "#5227FF"]}
         accentColor="#ff6b6b"
